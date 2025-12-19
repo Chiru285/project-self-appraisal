@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Review Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div id="loginContainer" class="login-container">
+  <div class="login-card">
+    <h2><i class="fas fa-lock"></i> Login to HR Portal</h2>
+    <form id="loginForm">
+      <input type="text" id="loginEmail" placeholder="User ID" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit">Login</button>
+      <p class="error" id="loginError"></p>
+    </form>
+  </div>
+</div>
+
+<div id="mainContainer" class="main-container" style="display: none;">
+  <nav class="navbar">
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="showSection('home')"><i class="fas fa-home"></i> Home</button>
+      <button class="nav-btn" onclick="showSection('manager')"><i class="fas fa-briefcase"></i> Manager Dashboard</button>
+      <button class="nav-btn logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="header-content">
+      <i class="fas fa-chart-line"></i>
+      <h1>HR Performance Review</h1>
+      <p>Employee Self Review & Manager Evaluation</p>
+    </div>
+  </header>
+
+  <div id="homeSection" class="section">
+    <div class="wrapper">
+      <!-- Employee Review -->
+      <section class="card employee">
+        <h2><i class="fas fa-user"></i> Employee Self Review</h2>
+
+        <form id="reviewForm">
+          <input type="text" id="empName" placeholder="Employee Name" required>
+          <input type="text" id="empDept" placeholder="Department" required>
+
+          <textarea id="empFeedback" placeholder="Write your self review..." required></textarea>
+
+          <select id="empRating" required>
+            <option value="">Select Rating</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Needs Improvement</option>
+          </select>
+
+          <button type="submit">Submit Review</button>
+          <p class="success" id="successMsg"></p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <div id="managerSection" class="section" style="display: none;">
+    <div class="wrapper">
+      <!-- Manager Section -->
+      <section class="card manager">
+        <h2><i class="fas fa-briefcase"></i> Manager Dashboard</h2>
+        <p class="note">Authorized Manager Access</p>
+
+        <button class="viewBtn" onclick="loadReviews()">View Employee Reviews</button>
+        <button class="clearBtn" onclick="clearReviews()">Clear All Reviews</button>
+
+        <div id="reviewContainer"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
